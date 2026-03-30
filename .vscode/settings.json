@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.DS_Store": true
+  },
+  "editor.wordWrap": "on",
+  "editor.rulers": [100],
+  "markdown.preview.fontSize": 14,
+  "python.analysis.typeCheckingMode": "basic",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  }
+}

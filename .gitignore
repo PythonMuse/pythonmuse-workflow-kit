@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive data (never commit real data)
+data/raw/*.csv
+data/raw/*.xlsx
+data/processed/*.csv
+data/processed/*.xlsx
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Outputs (regenerate, don't track)
+outputs/*
+!outputs/.gitkeep
+
+# Evidence logs (keep structure, not content)
+evidence/run-logs/*
+!evidence/run-logs/.gitkeep
