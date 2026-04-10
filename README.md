@@ -46,6 +46,8 @@ pythonmuse-workflow-kit/
       SKILL.md              reusable bank reconciliation workflow
     margin-analysis/
       SKILL.md              reusable margin analysis workflow
+    pdf-extract/
+      SKILL.md              PDF-to-Markdown extraction workflow
 
   docs/                     notes, memos, reference material
 ```
@@ -124,6 +126,7 @@ Start a session with:
 |-------|-------------|-------------|
 | [Bank Reconciliation](skills/bank-reconciliation/SKILL.md) | UC-001 | Match bank to GL, classify exceptions, produce audit-ready summary |
 | [Margin Analysis](skills/margin-analysis/SKILL.md) | UC-003 | Gross margin by segment, period comparison, concentration risk flags |
+| [PDF Extract](skills/pdf-extract/SKILL.md) | UC-004 | Convert PDF to Markdown, mask sensitive data, extract structured fields |
 
 To add your own skill, create a new folder under `/skills/` with a `SKILL.md` following the same format.
 
@@ -146,6 +149,7 @@ This template is part of the [PythonMuse AI Ledger](https://github.com/PythonMus
 - [Article 08: Why Claude "Forgets"](https://github.com/PythonMuse/ai-ledger/tree/main/articles/08-why-claude-forgets/) -- why these three files matter
 - [Article 11: From One-Time to Repeatable Workflows](https://github.com/PythonMuse/ai-ledger/tree/main/articles/11-one-time-to-repeatable-workflows/) -- the nine-step workflow pattern
 - [Article 14: Stop Using One AI Like It Is Excel](https://github.com/PythonMuse/ai-ledger/tree/main/articles/14-ai-team-for-accountants/) -- how to use Claude, ChatGPT, and Copilot together
+- [Article 16: The PDF Token Trap](https://github.com/PythonMuse/ai-ledger/tree/main/articles/16-pdf-token-trap/) -- why PDF-to-Markdown saves tokens and how the pdf-extract skill works
 - [AI Accounting Framework](https://github.com/PythonMuse/pythonmuse-ai-accounting-framework) -- the full 13-section learning framework
 
 ---
