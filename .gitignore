@@ -14,8 +14,9 @@ venv/
 Thumbs.db
 
 # Sensitive data (never commit real data)
-data/raw/*.csv
-data/raw/*.xlsx
+# Currently disabled. Remove comment and "#" sign in front to enable ignoring raw data files
+# data/raw/*.csv
+# data/raw/*.xlsx
 data/processed/*.csv
 data/processed/*.xlsx
 !data/raw/.gitkeep
