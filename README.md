@@ -10,6 +10,14 @@ Built on the [PythonMuse](https://github.com/PythonMuse/ai-ledger) methodology f
 
 On GitHub, click **"Use this template"** to create your own copy. Or clone it directly:
 
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/PythonMuse/pythonmuse-workflow-kit.git ~\Documents\my-project
+cd ~\Documents\my-project
+code .
+```
+
+**Mac / Linux / Git Bash:**
 ```bash
 git clone https://github.com/PythonMuse/pythonmuse-workflow-kit.git ~/Documents/my-project
 cd ~/Documents/my-project
