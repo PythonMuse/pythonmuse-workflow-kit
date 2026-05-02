@@ -110,6 +110,50 @@ A well-structured project replaces dozens of repeated prompts.
 
 ---
 
+## Try the Demo
+
+This kit ships with the two sample CSVs from [Article 01: AI Co-Pilot for Accounting](https://github.com/PythonMuse/ai-ledger/tree/main/articles/01-ai-copilot-for-accounting) already in [data/raw/](data/raw/). You can reproduce the entire margin-analysis story from the article without bringing your own data.
+
+**Walk through it:** open [docs/demo-prompts.md](docs/demo-prompts.md) and run the prompts in order in Copilot Chat with Claude selected.
+
+| Step | What you'll prompt | What you'll get |
+|------|-------------------|----------------|
+| 1 | Orient on the data | Structural read of both files |
+| 2 | Calculate margin per order | Low-margin orders flagged |
+| 3 | Show formulas, tie to source | Validation you can defend |
+| 4 | Export joined dataset to Excel | Workpaper for manual review |
+| 5 | Compare 2024 vs 2025 | YoY margin compression view |
+| 6 | Rank reps, vendors, labor | Concentration and inflation patterns |
+| 7 | Visualize the story | The five article charts as PNGs |
+| 8 | Promote charting to a skill | Reusable `/skills/visualize-margin/` |
+| 9 | Strategic summary | 5-point CFO-ready memo |
+| 10 | Explain it back | Reproducible narrative |
+| 11 | Validate before repeating | AI validation report + human sign-off |
+| 12 | **Convert to a repeatable script** | Production Python in `/src/` |
+
+Step 11 is the gate -- do not script anything you cannot defend by hand. Step 12 is the inflection point: once validated, you prompt Claude to turn the conversation into a versioned, commented, human-editable script -- with a CONFIG block, `# >>> HUMAN INPUT NEEDED:` markers, input validation, and a paired runbook. See the full prompts in [docs/demo-prompts.md](docs/demo-prompts.md).
+
+> **Real client data?** The demo prompts are deliberately short. Before running this flow on anything sensitive, read the *Before You Start -- Real-World Safety Note* at the top of [docs/demo-prompts.md](docs/demo-prompts.md). Mask first, state materiality and period explicitly, and forbid silent assumptions.
+
+### From One-Time to Repeatable
+
+A script is the first level of automation, not the last. After Step 9, here is the maturity ladder you can climb -- pick the next move that solves your real pain:
+
+1. **Promote to a Skill** -- move the logic into `/skills/<name>/SKILL.md` so any future session can invoke it by name.
+2. **Pin the prompt** -- version-control the prompt sequence under `docs/prompts/` so it survives sessions.
+3. **Externalize config** -- lift the CONFIG block out of Python into `config.yaml` so non-coders own the settings.
+4. **Add a smoke test** -- have Claude diff this run's totals against last month's approved output.
+5. **Add a CLI wrapper** -- `python -m src.<script> --period 2025-Q4` so it can be scheduled.
+6. **Generate the runbook** -- ask Claude to produce `RUNBOOK.md` next to the script, not just the code.
+7. **Lock the contract** -- a schema check that fails loudly when next month's file format drifts.
+8. **Capture a golden output** -- save one approved run as `/evidence/golden/` and diff future runs against it.
+
+Full prompts for each move are in [docs/demo-prompts.md](docs/demo-prompts.md) under *Beyond the Script*.
+
+For the underlying methodology see [Article 11: From One-Time to Repeatable Workflows](https://github.com/PythonMuse/ai-ledger/tree/main/articles/11-one-time-to-repeatable-workflows/).
+
+---
+
 ## Using This with Claude Code
 
 If you use Claude Code (inside VS Code), the experience is similar. Claude reads `CLAUDE.md` automatically and uses `plan.md` and `status_update.md` as project context.
@@ -146,6 +190,7 @@ To add your own skill, create a new folder under `/skills/` with a `SKILL.md` fo
 
 This template is part of the [PythonMuse AI Ledger](https://github.com/PythonMuse/ai-ledger) series -- practical Python, AI, and automation for accounting and finance teams.
 
+- [Article 01: AI Co-Pilot for Accounting](https://github.com/PythonMuse/ai-ledger/tree/main/articles/01-ai-copilot-for-accounting) -- the worked example reproduced by the demo prompts in this kit
 - [Article 08: Why Claude "Forgets"](https://github.com/PythonMuse/ai-ledger/tree/main/articles/08-why-claude-forgets/) -- why these three files matter
 - [Article 11: From One-Time to Repeatable Workflows](https://github.com/PythonMuse/ai-ledger/tree/main/articles/11-one-time-to-repeatable-workflows/) -- the nine-step workflow pattern
 - [Article 14: Stop Using One AI Like It Is Excel](https://github.com/PythonMuse/ai-ledger/tree/main/articles/14-ai-team-for-accountants/) -- how to use Claude, ChatGPT, and Copilot together
