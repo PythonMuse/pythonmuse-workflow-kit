@@ -31,8 +31,6 @@ Prefer to watch instead of read? Full walkthrough below:
 https://youtu.be/O1E1mMKWp2s
 ```
 
----
-
 ## What Is Inside
 
 ```
