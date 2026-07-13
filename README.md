@@ -10,10 +10,17 @@ Built on the [PythonMuse](https://github.com/PythonMuse/ai-ledger) methodology f
 
 On GitHub, click **"Use this template"** to create your own copy. Or clone it directly:
 
-**Windows (PowerShell):**
+**Windows (PowerShell) — standard:**
 ```powershell
 git clone https://github.com/PythonMuse/pythonmuse-workflow-kit.git ~\Documents\my-project
 cd ~\Documents\my-project
+code .
+```
+
+**Windows (PowerShell) — OneDrive users:** If your Documents folder is synced via OneDrive, use the full path:
+```powershell
+git clone https://github.com/PythonMuse/pythonmuse-workflow-kit.git "$env:USERPROFILE\OneDrive\Documents\my-project"
+cd "$env:USERPROFILE\OneDrive\Documents\my-project"
 code .
 ```
 
@@ -56,6 +63,8 @@ pythonmuse-workflow-kit/
       SKILL.md              reusable margin analysis workflow
     pdf-extract/
       SKILL.md              PDF-to-Markdown extraction workflow
+    scheduled-dashboard/
+      SKILL.md              daily sales & service dashboard — runs on a schedule
 
   docs/                     notes, memos, reference material
 ```
@@ -120,7 +129,26 @@ A well-structured project replaces dozens of repeated prompts.
 
 ## Try the Demo
 
-This kit ships with the two sample CSVs from [Article 01: AI Co-Pilot for Accounting](https://github.com/PythonMuse/ai-ledger/tree/main/articles/01-ai-copilot-for-accounting) already in [data/raw/](data/raw/). You can reproduce the entire margin-analysis story from the article without bringing your own data.
+This kit ships with sample data from two articles — you can explore both without bringing your own data.
+
+### Demo 1 — Margin Analysis (Article 01)
+
+The original two sample CSVs from [Article 01: AI Co-Pilot for Accounting](https://github.com/PythonMuse/ai-ledger/tree/main/articles/01-ai-copilot-for-accounting) are in [data/raw/](data/raw/). Walk through the full margin-analysis story using [docs/demo-prompts.md](docs/demo-prompts.md).
+
+### Demo 2 — Scheduled Daily Dashboard (Article 27) ✨ New
+
+Two new sample CSVs (`daily_sales.csv`, `service_calls.csv`) are now also in [data/raw/](data/raw/). Run the daily dashboard script to see an AI-generated HTML dashboard:
+
+```bash
+pip install pandas plotly
+python src/build_daily_dashboard.py
+```
+
+Then open `outputs/daily_dashboard/dashboard_YYYYMMDD.html` in your browser.
+
+See the full walkthrough: **[Article 27 — AI That Runs Before You Log In](https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in)**
+
+Use the skill for your own data: **[skills/scheduled-dashboard/SKILL.md](skills/scheduled-dashboard/SKILL.md)**
 
 **Walk through it:** open [docs/demo-prompts.md](docs/demo-prompts.md) and run the prompts in order in Copilot Chat with Claude selected.
 
@@ -142,6 +170,34 @@ This kit ships with the two sample CSVs from [Article 01: AI Co-Pilot for Accoun
 Step 11 is the gate -- do not script anything you cannot defend by hand. Step 12 is the inflection point: once validated, you prompt Claude to turn the conversation into a versioned, commented, human-editable script -- with a CONFIG block, `# >>> HUMAN INPUT NEEDED:` markers, input validation, and a paired runbook. See the full prompts in [docs/demo-prompts.md](docs/demo-prompts.md).
 
 > **Real client data?** The demo prompts are deliberately short. Before running this flow on anything sensitive, read the *Before You Start -- Real-World Safety Note* at the top of [docs/demo-prompts.md](docs/demo-prompts.md). Mask first, state materiality and period explicitly, and forbid silent assumptions.
+
+### Demo 3 — Multi-Agent Orchestration (Article 19) ✨ New
+
+Want to see what a coordinated, multi-agent close workflow looks like before you build one? The `multi-agent/` folder is a fully annotated demo:
+
+```
+multi-agent/
+  orchestrator.md             master workflow: who does what, in what order
+  agents/
+    gl-agent.md               GL validation role and rules
+    bank-rec-agent.md         bank reconciliation role and rules
+    variance-agent.md         variance commentary role and rules
+  status/
+    workflow-status.md        shared handoff tracker — agents update this as they work
+  outputs/                    where each agent saves its results
+```
+
+**Start here:** Open `multi-agent/orchestrator.md` and read it top to bottom. It is the whole workflow, in plain language. Then open the agent files to see how each role is defined.
+
+**Try it with Copilot:**
+
+> "Read multi-agent/orchestrator.md. Confirm the source files are present in data/. Begin Step 1 using the instructions in multi-agent/agents/gl-agent.md."
+
+Then watch the workflow move step by step -- each agent produces a defined output, updates the status file, and hands off to the next.
+
+For the full explanation of how and why this works, see **[Article 19 — When One Agent Is Not Enough](https://github.com/PythonMuse/ai-ledger/tree/main/articles/19-multi-agent-orchestration/)**.
+
+---
 
 ### From One-Time to Repeatable
 
@@ -203,6 +259,7 @@ This template is part of the [PythonMuse AI Ledger](https://github.com/PythonMus
 - [Article 11: From One-Time to Repeatable Workflows](https://github.com/PythonMuse/ai-ledger/tree/main/articles/11-one-time-to-repeatable-workflows/) -- the nine-step workflow pattern
 - [Article 14: Stop Using One AI Like It Is Excel](https://github.com/PythonMuse/ai-ledger/tree/main/articles/14-ai-team-for-accountants/) -- how to use Claude, ChatGPT, and Copilot together
 - [Article 16: The PDF Token Trap](https://github.com/PythonMuse/ai-ledger/tree/main/articles/16-pdf-token-trap/) -- why PDF-to-Markdown saves tokens and how the pdf-extract skill works
+- [Article 19: When One Agent Is Not Enough](https://github.com/PythonMuse/ai-ledger/tree/main/articles/19-multi-agent-orchestration/) -- how to design and run orchestrated multi-agent accounting workflows
 - [AI Accounting Framework](https://github.com/PythonMuse/pythonmuse-ai-accounting-framework) -- the full 13-section learning framework
 
 ---

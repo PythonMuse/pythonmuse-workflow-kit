@@ -1,0 +1,73 @@
+name: invoice-to-dashboard
+description: >
+  Waits for an invoicing completion email, refreshes the sales dashboard,
+  and notifies the finance team. Generated as a demo for Article 29 of the
+  PythonMuse ai-ledger series.
+
+# ─────────────────────────────────────────────────────────────
+# TRIGGER
+# What starts this process?
+# Review: Could this email arrive twice? Could a test email trigger it?
+# ─────────────────────────────────────────────────────────────
+trigger:
+  type: email
+  subject_contains: "Invoicing complete"
+  sender_domain: "yourcompany.com"   # restrict to internal senders only
+
+# ─────────────────────────────────────────────────────────────
+# SEQUENCE
+# What order do things happen?
+# Review: Is notification gated after data is validated, not before?
+# ─────────────────────────────────────────────────────────────
+steps:
+  - pull_sales_data           # fetch from data/raw/daily_sales.csv
+  - validate_row_count        # sanity check: fail loud if rows < 10
+  - build_dashboard           # run src/build_daily_dashboard.py
+  - export_summary_excel      # save to outputs/ as dated .xlsx
+  - notify_finance            # only runs if all above steps pass
+
+# ─────────────────────────────────────────────────────────────
+# PERMISSIONS
+# What can this workflow touch?
+# Review: Is raw data protected? Can this overwrite source files?
+# ─────────────────────────────────────────────────────────────
+permissions:
+  read_only:
+    - data/raw/               # never write here
+  read_write:
+    - data/processed/
+    - outputs/
+  off_limits:
+    - evidence/               # audit trail — never touched by automation
+    - skills/                 # skill definitions — human-only changes
+
+# ─────────────────────────────────────────────────────────────
+# RETRY RULES
+# What happens if something fails?
+# Review: Could retries create duplicate outputs or double notifications?
+# ─────────────────────────────────────────────────────────────
+retry:
+  attempts: 3
+  delay_seconds: 60
+  on_duplicate_trigger: skip  # if triggered twice, skip second run
+
+# ─────────────────────────────────────────────────────────────
+# HUMAN GATE
+# Does a human review before outputs are distributed?
+# Review: Who is the approver? What if they are unavailable?
+# ─────────────────────────────────────────────────────────────
+approval:
+  required: true
+  approver_role: finance_manager
+  timeout_hours: 24
+  on_timeout: hold            # do not auto-distribute if no response
+
+# ─────────────────────────────────────────────────────────────
+# LOGGING
+# Where does the evidence trail go?
+# ─────────────────────────────────────────────────────────────
+logging:
+  destination: evidence/run-logs/
+  level: info
+  include_inputs: true        # log what data was pulled
+  include_outputs: true       # log what files were created
