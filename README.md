@@ -39,6 +39,20 @@ https://youtu.be/O1E1mMKWp2s
 
 ---
 
+## Requirements
+
+- Python 3.10+
+- Dependencies listed in [requirements.txt](requirements.txt):
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate      # Windows
+source .venv/bin/activate   # Mac/Linux
+pip install -r requirements.txt
+```
+
+---
+
 ## What Is Inside
 
 ```bash
@@ -146,7 +160,7 @@ The original two sample CSVs from [Article 01: AI Co-Pilot for Accounting](https
 Two new sample CSVs (`daily_sales.csv`, `service_calls.csv`) are now also in [data/raw/](data/raw/). Run the daily dashboard script to see an AI-generated HTML dashboard:
 
 ```bash
-pip install pandas plotly
+pip install -r requirements.txt
 python src/build_daily_dashboard.py
 ```
 
