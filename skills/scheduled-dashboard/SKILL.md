@@ -5,7 +5,7 @@ description: >
   revenue vs. target, gross margin, and exception flags, then generates
   an interactive HTML dashboard using Plotly. Designed to run on a
   scheduled trigger before business hours.
-article: https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in
+article: https://github.com/PythonMuse/ai-ledger/tree/main/articles/18-ai-runs-before-you-log-in
 author: PythonMuse LLC
 ---
 
@@ -110,4 +110,4 @@ These are the actual prompts used to generate the scripts in this skill:
 ---
 
 *Part of the [PythonMuse Workflow Kit](https://github.com/PythonMuse/pythonmuse-workflow-kit)*
-*Article: [AI That Runs Before You Log In](https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in)*
+*Article: [AI That Runs Before You Log In](https://github.com/PythonMuse/ai-ledger/tree/main/articles/18-ai-runs-before-you-log-in)*

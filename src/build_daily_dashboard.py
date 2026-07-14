@@ -1,8 +1,8 @@
 """
 build_daily_dashboard.py
 ========================
-PythonMuse Article 27 — AI That Runs Before You Log In
-https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in
+PythonMuse Article 18 — AI That Runs Before You Log In
+https://github.com/PythonMuse/ai-ledger/tree/main/articles/18-ai-runs-before-you-log-in
 
 Loads yesterday's sales and service call data, calculates key metrics,
 flags exceptions, and saves an interactive HTML dashboard.

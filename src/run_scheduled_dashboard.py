@@ -1,8 +1,8 @@
 """
 run_scheduled_dashboard.py
 ===========================
-PythonMuse Article 27 — AI That Runs Before You Log In
-https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in
+PythonMuse Article 18 — AI That Runs Before You Log In
+https://github.com/PythonMuse/ai-ledger/tree/main/articles/18-ai-runs-before-you-log-in
 
 Wrapper script for scheduled execution of the daily dashboard.
 Configure this file as the entry point in your task scheduler.

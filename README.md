@@ -155,7 +155,7 @@ This kit ships with sample data from two articles — you can explore both witho
 
 The original two sample CSVs from [Article 01: AI Co-Pilot for Accounting](https://github.com/PythonMuse/ai-ledger/tree/main/articles/01-ai-copilot-for-accounting) are in [data/raw/](data/raw/). Walk through the full margin-analysis story using [docs/demo-prompts.md](docs/demo-prompts.md).
 
-### Demo 2 — Scheduled Daily Dashboard (Article 27) ✨ New
+### Demo 2 — Scheduled Daily Dashboard (Article 18) ✨ New
 
 Two new sample CSVs (`daily_sales.csv`, `service_calls.csv`) are now also in [data/raw/](data/raw/). Run the daily dashboard script to see an AI-generated HTML dashboard:
 
@@ -166,7 +166,7 @@ python src/build_daily_dashboard.py
 
 Then open `outputs/daily_dashboard/dashboard_YYYYMMDD.html` in your browser.
 
-See the full walkthrough: **[Article 27 — AI That Runs Before You Log In](https://github.com/PythonMuse/ai-ledger/tree/main/articles/27-ai-runs-before-you-log-in)**
+See the full walkthrough: **[Article 18 — AI That Runs Before You Log In](https://github.com/PythonMuse/ai-ledger/tree/main/articles/18-ai-runs-before-you-log-in)**
 
 Use the skill for your own data: **[skills/scheduled-dashboard/SKILL.md](skills/scheduled-dashboard/SKILL.md)**
 
