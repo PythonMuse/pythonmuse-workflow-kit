@@ -31,12 +31,11 @@ from plotly.subplots import make_subplots
 # Paths — relative to this script so it runs from any location
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR   = SCRIPT_DIR.parent / "data"
-OUTPUT_DIR = SCRIPT_DIR.parent.parent.parent.parent.parent / "outputs" / "daily_dashboard"
-LOG_DIR    = OUTPUT_DIR / "logs"
-
-# When running from the workflow-kit, outputs land in outputs/daily_dashboard/
-# Adjust OUTPUT_DIR to point wherever makes sense for your project.
+PROJECT_ROOT = SCRIPT_DIR.parent
+DATA_DIR = PROJECT_ROOT / "data"
+RAW_DATA_DIR = DATA_DIR / "raw"
+OUTPUT_DIR = PROJECT_ROOT / "outputs" / "daily_dashboard"
+LOG_DIR = OUTPUT_DIR / "logs"
 
 # ---------------------------------------------------------------------------
 # Logging — every run leaves a trace
@@ -58,16 +57,25 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     """Load sales and service call data from CSV files."""
 
     # [CSV VERSION] — use these lines when working with sample data
-    sales_path   = DATA_DIR / "daily_sales.csv"
-    service_path = DATA_DIR / "service_calls.csv"
+    candidates = [
+        DATA_DIR / "daily_sales.csv",
+        RAW_DATA_DIR / "daily_sales.csv",
+    ]
+    sales_path = next((path for path in candidates if path.exists()), None)
 
-    if not sales_path.exists() or not service_path.exists():
+    service_candidates = [
+        DATA_DIR / "service_calls.csv",
+        RAW_DATA_DIR / "service_calls.csv",
+    ]
+    service_path = next((path for path in service_candidates if path.exists()), None)
+
+    if sales_path is None or service_path is None:
         raise FileNotFoundError(
-            f"Data files not found in {DATA_DIR}. "
+            f"Data files not found in {DATA_DIR} or {RAW_DATA_DIR}. "
             "Make sure daily_sales.csv and service_calls.csv are present."
         )
 
-    sales_df   = pd.read_csv(sales_path, parse_dates=["date"])
+    sales_df = pd.read_csv(sales_path, parse_dates=["date"])
     service_df = pd.read_csv(service_path, parse_dates=["date"])
 
     # [SQL UPGRADE] — when ready to connect to your database, replace the

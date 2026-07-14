@@ -25,6 +25,8 @@ data/processed/*.xlsx
 # Outputs (regenerate, don't track)
 outputs/*
 !outputs/.gitkeep
+!outputs/daily_dashboard/
+!outputs/daily_dashboard/*.html
 
 # Evidence logs (keep structure, not content)
 evidence/run-logs/*

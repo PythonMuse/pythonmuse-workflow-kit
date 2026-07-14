@@ -1,0 +1,9 @@
+2026-07-14 14:23:36,177  INFO  ============================================================
+2026-07-14 14:23:36,177  INFO  Daily Dashboard — Build Starting
+2026-07-14 14:23:36,177  INFO  ============================================================
+2026-07-14 14:23:36,185  INFO  Loaded 18 sales rows and 18 service rows.
+2026-07-14 14:23:36,187  INFO  Report date: 2026-05-15
+2026-07-14 14:23:36,201  INFO  Analysis complete. 0 exception(s) flagged.
+2026-07-14 14:23:36,373  INFO  Dashboard saved: C:\Users\sgruz\OneDrive\Documents\PythonMuse\Development\pythonmuse-workflow-kit\outputs\daily_dashboard\dashboard_20260515.html
+2026-07-14 14:23:36,374  INFO  Build complete.
+2026-07-14 14:23:36,374  INFO  Open your dashboard: C:\Users\sgruz\OneDrive\Documents\PythonMuse\Development\pythonmuse-workflow-kit\outputs\daily_dashboard\dashboard_20260515.html
